@@ -65,8 +65,10 @@ export default function StudentJourney() {
 
       <section className="section-dark">
         <div className="container">
-          <h2 className="section-title">Understanding Each Step</h2>
-          <p className="section-subtitle mb-32">Detailed breakdown of what to expect at every stage of your journey.</p>
+          <div className="text-center mb-32">
+            <h2 className="section-title">Understanding Each Step</h2>
+            <p className="section-subtitle">Detailed breakdown of what to expect at every stage of your journey.</p>
+          </div>
           <div className="journey-steps">
             {sections.map((s, i) => (
               <motion.div

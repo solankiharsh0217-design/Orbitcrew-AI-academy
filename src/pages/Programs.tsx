@@ -38,8 +38,10 @@ export default function Programs() {
       {/* Comparison */}
       <section className="section-light">
         <div className="container">
-          <h2 className="section-title">Program Comparison</h2>
-          <p className="section-subtitle mb-32">Find the right path based on your interests and career goals.</p>
+          <div className="text-center mb-32">
+            <h2 className="section-title">Program Comparison</h2>
+            <p className="section-subtitle">Find the right path based on your interests and career goals.</p>
+          </div>
           <div style={{ overflowX: "auto" }}>
             <table className="compare-table">
               <thead>
@@ -103,8 +105,10 @@ export default function Programs() {
       {/* Detailed Modules */}
       <section className="section-dark">
         <div className="container">
-          <h2 className="section-title">Detailed Program Modules</h2>
-          <p className="section-subtitle mb-32">Deep dive into what you learn in each program.</p>
+          <div className="text-center mb-32">
+            <h2 className="section-title">Detailed Program Modules</h2>
+            <p className="section-subtitle">Deep dive into what you learn in each program.</p>
+          </div>
           <ProgramsStack />
         </div>
       </section>
