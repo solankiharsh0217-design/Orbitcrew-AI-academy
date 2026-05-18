@@ -2,6 +2,7 @@ import PageHero from "../components/PageHero";
 import Timeline from "../components/Timeline";
 import FAQ from "../components/FAQ";
 import FinalCTA from "../components/FinalCTA";
+import { motion } from "framer-motion";
 
 const journeyFaq = [
   { q: "How long does the counseling process take?", a: "Counseling sessions typically take 30-45 minutes. We discuss your goals, interests, and explain how our programs work." },
@@ -54,7 +55,7 @@ export default function StudentJourney() {
         desc="A structured, step-by-step process designed to take you from your first counseling session to a confident career in AI and digital skills."
       />
 
-      <section className="section">
+      <section className="section-light">
         <div className="container">
           <h2 className="section-title">The Complete Journey</h2>
           <p className="section-subtitle mb-32">Every step is designed to build your skills, confidence, and career readiness.</p>
@@ -62,25 +63,32 @@ export default function StudentJourney() {
         </div>
       </section>
 
-      <section className="section" style={{ background: "var(--white)" }}>
+      <section className="section-dark">
         <div className="container">
           <h2 className="section-title">Understanding Each Step</h2>
           <p className="section-subtitle mb-32">Detailed breakdown of what to expect at every stage of your journey.</p>
-          <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
+          <div className="journey-steps">
             {sections.map((s, i) => (
-              <div key={i} style={{ padding: "28px 32px", background: "var(--white)", borderRadius: "var(--radius-md)", border: "1px solid rgba(0,0,0,0.05)" }}>
-                <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 8, display: "flex", alignItems: "center", gap: 12 }}>
-                  <span style={{ width: 28, height: 28, borderRadius: "50%", background: "var(--primary)", color: "var(--white)", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, flexShrink: 0 }}>{i + 1}</span>
-                  {s.title}
-                </h3>
-                <p style={{ fontSize: 15, color: "var(--gray-500)", lineHeight: 1.7, marginLeft: 40 }}>{s.desc}</p>
-              </div>
+              <motion.div
+                key={i}
+                className="journey-step stagger-item"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+              >
+                <span className="step-number">{i + 1}</span>
+                <div className="step-content">
+                  <h3>{s.title}</h3>
+                  <p>{s.desc}</p>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section">
+      <section className="section-light">
         <div className="container">
           <div className="text-center mb-32">
             <span className="section-label">FAQ</span>

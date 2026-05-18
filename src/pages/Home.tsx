@@ -6,27 +6,62 @@ import Timeline from "../components/Timeline";
 import FAQ from "../components/FAQ";
 import FinalCTA from "../components/FinalCTA";
 import HorizontalScroll from "../components/HorizontalScroll";
+import ScrollProgress from "../components/ScrollProgress";
+import StatsBar from "../components/StatsBar";
+import Testimonials from "../components/Testimonials";
 import { faqData } from "../data/programs";
 import DotGlobeHeroDemo from "../components/ui/hero-demo";
 import { PremiumButton } from "../components/ui/PremiumButton";
-import { Card } from "../components/ui/ElevatedCard";
-import { Badge } from "../components/Badge";
 import { Calendar, Award, Users, Laptop, Target, Heart } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Home() {
+  const stats = [
+    { value: "500+", label: "Students Trained" },
+    { value: "90%", label: "Placement Rate" },
+    { value: "4", label: "Core Programs" },
+    { value: "50+", label: "Live Projects" },
+    { value: "15", label: "Expert Mentors" },
+  ];
+
+  const testimonials = [
+    {
+      quote: "OrbitCrew changed my career trajectory completely. The hands-on AI projects gave me a portfolio that impressed every interviewer.",
+      name: "Priya Sharma",
+      role: "AI Automation Graduate",
+      initials: "PS",
+    },
+    {
+      quote: "The small batch size meant I got personal attention. My mentor helped me land my first freelance client within a month of completing the course.",
+      name: "Rahul Verma",
+      role: "Web Development Student",
+      initials: "RV",
+    },
+    {
+      quote: "I went from zero digital marketing knowledge to managing campaigns for real clients. The practical approach is what sets OrbitCrew apart.",
+      name: "Anjali Singh",
+      role: "Digital Marketing Graduate",
+      initials: "AS",
+    },
+  ];
+
   return (
     <>
+      <ScrollProgress />
+
       {/* HERO — 3D Globe */}
       <DotGlobeHeroDemo />
 
+      {/* STATS BAR */}
+      <StatsBar items={stats} />
+
       {/* PAIN POINTS */}
-      <section className="section">
+      <section className="section-light">
         <div className="container">
           <div className="text-center mb-32">
             <span className="section-label">The Reality</span>
             <h2 className="section-title">Why Most Students Feel Stuck</h2>
-            <p className="section-subtitle" style={{ margin: "0 auto" }}>Traditional education leaves most students unprepared for real-world careers. Here is what is missing.</p>
+            <p className="section-subtitle">Traditional education leaves most students unprepared for real-world careers. Here is what is missing.</p>
           </div>
           <div className="pain-grid">
             {[
@@ -38,14 +73,14 @@ export default function Home() {
             ].map((c, i) => (
               <motion.div
                 key={i}
-                className="pain-card"
+                className="pain-card stagger-item"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
                 <div className="icon">{c.icon}</div>
-                <Badge variant="premium" animate={i === 0}>{c.badge}</Badge>
+                <span className="badge badge-premium">{c.badge}</span>
                 <h3>{c.title}</h3>
                 <p>{c.desc}</p>
               </motion.div>
@@ -55,12 +90,12 @@ export default function Home() {
       </section>
 
       {/* WHY ORBITCREW */}
-      <section className="section" style={{ background: "var(--white)" }}>
+      <section className="section-dark">
         <div className="container">
           <div className="text-center mb-32">
             <span className="section-label">Why OrbitCrew</span>
             <h2 className="section-title">A Different Kind of Learning Experience</h2>
-            <p className="section-subtitle" style={{ margin: "0 auto" }}>We combine selective mentorship, real projects, and career-focused training to build job-ready skills.</p>
+            <p className="section-subtitle">We combine selective mentorship, real projects, and career-focused training to build job-ready skills.</p>
           </div>
           <div className="why-grid">
             {[
@@ -73,14 +108,14 @@ export default function Home() {
             ].map((c, i) => (
               <motion.div
                 key={i}
-                className={`why-card ${i === 0 ? "card-featured" : ""}`}
+                className={`why-card stagger-item ${i === 0 ? "card-featured" : ""}`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
                 <div className="card-header">
-                  <Badge variant={i === 0 ? "premium" : "default"}>{c.badge}</Badge>
+                  <span className={`badge ${i === 0 ? "badge-premium" : "badge-default"}`}>{c.badge}</span>
                   <h3>{c.title}</h3>
                 </div>
                 <div className="why-card-image"><ImagePlaceholder label={c.img} /></div>
@@ -94,12 +129,12 @@ export default function Home() {
       </section>
 
       {/* PROGRAMS OVERVIEW */}
-      <section className="section">
+      <section className="section-light">
         <div className="container">
           <div className="text-center mb-32">
             <span className="section-label">Our Programs</span>
             <h2 className="section-title">Choose Your Learning Path</h2>
-            <p className="section-subtitle" style={{ margin: "0 auto" }}>Practical, project-based programs designed for real career outcomes. Expand each to explore.</p>
+            <p className="section-subtitle">Practical, project-based programs designed for real career outcomes. Expand each to explore.</p>
           </div>
           <ProgramsStack />
         </div>
@@ -109,31 +144,31 @@ export default function Home() {
       <Showcase />
 
       {/* STUDENT JOURNEY */}
-      <section className="section">
+      <section className="section-dark">
         <div className="container">
           <div className="text-center mb-32">
             <span className="section-label">Your Journey</span>
             <h2 className="section-title">From Counseling to Career</h2>
-            <p className="section-subtitle" style={{ margin: "0 auto" }}>A structured path that takes you from absolute beginner to job-ready professional.</p>
+            <p className="section-subtitle">A structured path that takes you from absolute beginner to job-ready professional.</p>
           </div>
           <Timeline />
-          <div style={{ marginTop: 32, padding: "20px 24px", background: "#f8f6ff", borderRadius: "var(--radius-sm)", borderLeft: "3px solid var(--primary)" }}>
-            <p style={{ fontSize: 14, color: "var(--gray-700)", lineHeight: 1.7 }}><strong>Important:</strong> A laptop is required. Regular attendance, project completion, and a positive learning attitude are essential. Basic computer knowledge is preferred.</p>
+          <div className="info-box">
+            <p><strong>Important:</strong> A laptop is required. Regular attendance, project completion, and a positive learning attitude are essential. Basic computer knowledge is preferred.</p>
           </div>
         </div>
       </section>
 
       {/* PLACEMENTS */}
-      <section className="section" style={{ background: "var(--white)" }}>
+      <section className="section-light">
         <div className="container">
           <div className="text-center mb-32">
             <span className="section-label">Career Support</span>
             <h2 className="section-title">Placements & Internships</h2>
-            <p className="section-subtitle" style={{ margin: "0 auto" }}>We take your career seriously and provide structured support to help you transition into the workforce.</p>
+            <p className="section-subtitle">We take your career seriously and provide structured support to help you transition into the workforce.</p>
           </div>
           <div className="split-grid">
             <motion.div
-              className="split-card"
+              className="split-card stagger-item"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
@@ -148,7 +183,7 @@ export default function Home() {
               </ul>
             </motion.div>
             <motion.div
-              className="split-card"
+              className="split-card stagger-item"
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
@@ -171,13 +206,25 @@ export default function Home() {
         </div>
       </section>
 
+      {/* TESTIMONIALS */}
+      <section className="section-accent">
+        <div className="container">
+          <div className="text-center mb-32">
+            <span className="section-label">Student Stories</span>
+            <h2 className="section-title">What Our Students Say</h2>
+            <p className="section-subtitle">Real experiences from real students who transformed their careers with OrbitCrew.</p>
+          </div>
+          <Testimonials items={testimonials} />
+        </div>
+      </section>
+
       {/* ENVIRONMENT GALLERY */}
-      <section className="section">
+      <section className="section-light">
         <div className="container">
           <div className="text-center mb-32">
             <span className="section-label">Our Space</span>
             <h2 className="section-title">A Real Learning Environment</h2>
-            <p className="section-subtitle" style={{ margin: "0 auto" }}>Premium classrooms, modern workstations, and a collaborative atmosphere designed for focused learning.</p>
+            <p className="section-subtitle">Premium classrooms, modern workstations, and a collaborative atmosphere designed for focused learning.</p>
           </div>
           <HorizontalScroll trackClassName="env-track">
             {["Premium Classroom Overview", "Modern Workstations", "Mentorship Moment", "Practical Session", "Project Discussion", "Collaborative Learning", "Students Working"].map((l, i) => (
@@ -190,7 +237,7 @@ export default function Home() {
       </section>
 
       {/* ADMISSIONS */}
-      <section className="section" style={{ background: "var(--white)" }}>
+      <section className="section-dark">
         <div className="container center-block">
           <span className="section-label">Admissions</span>
           <h2 className="section-title">Selective Admissions</h2>
@@ -211,7 +258,7 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section className="section">
+      <section className="section-light">
         <div className="container">
           <div className="text-center mb-32">
             <span className="section-label">FAQ</span>

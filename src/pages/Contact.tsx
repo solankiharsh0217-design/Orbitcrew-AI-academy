@@ -42,14 +42,14 @@ export default function Contact() {
       />
 
       {/* Process */}
-      <section className="section" style={{ background: "var(--white)" }}>
+      <section className="section-dark">
         <div className="container">
           <div className="text-center mb-32">
             <span className="section-label">After You Apply</span>
             <h2 className="section-title">What Happens After Your Inquiry</h2>
-            <p className="section-subtitle" style={{ margin: "0 auto" }}>Simple, transparent process from inquiry to enrollment.</p>
+            <p className="section-subtitle">Simple, transparent process from inquiry to enrollment.</p>
           </div>
-          <div className="pain-grid" style={{ maxWidth: 800, margin: "0 auto" }}>
+          <div className="pain-grid process-grid">
             {[
               { step: "1", title: "We Contact You", desc: "Within 24 hours, our team reaches out to schedule your free counseling." },
               { step: "2", title: "Counseling Session", desc: "We discuss your goals, interests, and recommend the best program for you." },
@@ -58,14 +58,13 @@ export default function Contact() {
             ].map((s, i) => (
               <motion.div
                 key={i}
-                className="pain-card"
-                style={{ textAlign: "center" }}
+                className="pain-card process-card stagger-item"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
-                <div style={{ width: 48, height: 48, borderRadius: "50%", background: "var(--primary)", color: "var(--white)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, fontWeight: 700, margin: "0 auto 12px" }}>{s.step}</div>
+                <div className="step-circle">{s.step}</div>
                 <h3>{s.title}</h3>
                 <p>{s.desc}</p>
               </motion.div>
@@ -75,7 +74,7 @@ export default function Contact() {
       </section>
 
       {/* Form + Info */}
-      <section className="section">
+      <section className="section-light">
         <div className="container contact-grid">
           <motion.div
             className="form-card"
@@ -84,13 +83,13 @@ export default function Contact() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5 }}
           >
-            <h3 style={{ fontSize: 22, fontWeight: 700, marginBottom: 8 }}>Book Free Counseling</h3>
-            <p style={{ fontSize: 14, color: "var(--gray-500)", marginBottom: 24 }}>Fill in your details and we will reach out to schedule your session.</p>
+            <h3 className="form-title">Book Free Counseling</h3>
+            <p className="form-subtitle">Fill in your details and we will reach out to schedule your session.</p>
             {submitted ? (
-              <div style={{ textAlign: "center", padding: "40px 20px" }}>
-                <div style={{ fontSize: 48, marginBottom: 16 }}>✓</div>
-                <h3 style={{ fontSize: 20, fontWeight: 600, marginBottom: 8 }}>Thank You!</h3>
-                <p style={{ color: "var(--gray-500)" }}>We will contact you within 24 hours to schedule your free counseling session.</p>
+              <div className="form-success">
+                <div className="success-icon">✓</div>
+                <h3>Thank You!</h3>
+                <p>We will contact you within 24 hours to schedule your free counseling session.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit}>
@@ -177,7 +176,7 @@ export default function Contact() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: 0.15 }}
           >
-            <div className="contact-info-card" style={{ marginBottom: 24 }}>
+            <div className="contact-info-card">
               <h3>Contact Information</h3>
               {infoItems.map((item, i) => (
                 <div key={i} className="info-item">
@@ -188,19 +187,19 @@ export default function Contact() {
                   </div>
                 </div>
               ))}
-              <div style={{ marginTop: 24, display: "flex", gap: 12 }}>
-                <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener" className="btn btn-whatsapp" style={{ flex: 1, justifyContent: "center" }}>WhatsApp Us</a>
+              <div className="contact-actions">
+                <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener" className="btn btn-whatsapp">WhatsApp Us</a>
               </div>
             </div>
 
             <div className="contact-info-card">
               <h3>Admission Process</h3>
-              <ul>
-                <li style={{ padding: "8px 0", fontSize: 14, color: "var(--gray-700)", display: "flex", alignItems: "center", gap: 8, borderBottom: "1px solid var(--gray-100)" }}>1. Free counseling session</li>
-                <li style={{ padding: "8px 0", fontSize: 14, color: "var(--gray-700)", display: "flex", alignItems: "center", gap: 8, borderBottom: "1px solid var(--gray-100)" }}>2. Basic screening conversation</li>
-                <li style={{ padding: "8px 0", fontSize: 14, color: "var(--gray-700)", display: "flex", alignItems: "center", gap: 8, borderBottom: "1px solid var(--gray-100)" }}>3. Program finalization</li>
-                <li style={{ padding: "8px 0", fontSize: 14, color: "var(--gray-700)", display: "flex", alignItems: "center", gap: 8, borderBottom: "1px solid var(--gray-100)" }}>4. Admission & batch allocation</li>
-                <li style={{ padding: "8px 0", fontSize: 14, color: "var(--gray-700)", display: "flex", alignItems: "center", gap: 8 }}>5. Start learning with real projects</li>
+              <ul className="admission-steps">
+                <li>1. Free counseling session</li>
+                <li>2. Basic screening conversation</li>
+                <li>3. Program finalization</li>
+                <li>4. Admission & batch allocation</li>
+                <li>5. Start learning with real projects</li>
               </ul>
             </div>
           </motion.div>
@@ -208,7 +207,7 @@ export default function Contact() {
       </section>
 
       {/* FAQ */}
-      <section className="section" style={{ background: "var(--white)" }}>
+      <section className="section-dark">
         <div className="container">
           <div className="text-center mb-32">
             <span className="section-label">FAQ</span>

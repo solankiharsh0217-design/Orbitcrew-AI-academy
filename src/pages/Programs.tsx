@@ -36,7 +36,7 @@ export default function Programs() {
       <PageHero label="Our Programs" title="Practical Programs for Real Careers" desc="Every program is designed around real-world skills, practical projects, and career outcomes. No theory-heavy courses — only hands-on, job-ready training." />
 
       {/* Comparison */}
-      <section className="section">
+      <section className="section-light">
         <div className="container">
           <h2 className="section-title">Program Comparison</h2>
           <p className="section-subtitle mb-32">Find the right path based on your interests and career goals.</p>
@@ -101,7 +101,7 @@ export default function Programs() {
       </section>
 
       {/* Detailed Modules */}
-      <section className="section" style={{ background: "var(--white)" }}>
+      <section className="section-dark">
         <div className="container">
           <h2 className="section-title">Detailed Program Modules</h2>
           <p className="section-subtitle mb-32">Deep dive into what you learn in each program.</p>
@@ -110,18 +110,18 @@ export default function Programs() {
       </section>
 
       {/* Tools */}
-      <section className="section">
+      <section className="section-light">
         <div className="container">
           <div className="text-center mb-32">
             <span className="section-label">Tools & Platforms</span>
             <h2 className="section-title">Industry Tools You Master</h2>
-            <p className="section-subtitle" style={{ margin: "0 auto" }}>Hands-on training with the same tools used by professionals and agencies worldwide.</p>
+            <p className="section-subtitle">Hands-on training with the same tools used by professionals and agencies worldwide.</p>
           </div>
           <div className="why-grid">
             {tools.map((t, i) => (
               <motion.div
                 key={i}
-                className="why-card"
+                className="why-card stagger-item"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -138,18 +138,18 @@ export default function Programs() {
       <Showcase title="Projects Students Build" subtitle="Real projects that become part of your professional portfolio and give you practical experience." />
 
       {/* Career pathways */}
-      <section className="section">
+      <section className="section-dark">
         <div className="container">
           <div className="text-center mb-32">
             <span className="section-label">Your Future</span>
             <h2 className="section-title">Possible Career Directions</h2>
-            <p className="section-subtitle" style={{ margin: "0 auto" }}>Your learning path opens doors to multiple career opportunities in the digital economy.</p>
+            <p className="section-subtitle">Your learning path opens doors to multiple career opportunities in the digital economy.</p>
           </div>
           <div className="pain-grid">
             {careerCards.map((c, i) => (
               <motion.div
                 key={i}
-                className="pain-card"
+                className="pain-card stagger-item"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -165,7 +165,7 @@ export default function Programs() {
       </section>
 
       {/* FAQ */}
-      <section className="section" style={{ background: "var(--white)" }}>
+      <section className="section-light">
         <div className="container">
           <div className="text-center mb-32">
             <span className="section-label">FAQ</span>

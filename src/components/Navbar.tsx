@@ -20,6 +20,17 @@ export default function Navbar() {
     setOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   const links = [
     { to: "/", label: "Home" },
     { to: "/programs", label: "Programs" },
@@ -179,6 +190,31 @@ export default function Navbar() {
             transition: "all 0.3s ease",
           }} />
         </button>
+      </div>
+
+      {/* Mobile Fullscreen Overlay */}
+      <div className="nav-mobile-overlay">
+        {links.map((l) => (
+          <Link
+            key={l.to}
+            to={l.to}
+            onClick={() => setOpen(false)}
+            style={{
+              color: location.pathname === l.to ? "var(--primary)" : "var(--gray-900)",
+              fontWeight: location.pathname === l.to ? 700 : 600,
+            }}
+          >
+            {l.label}
+          </Link>
+        ))}
+        <div className="mobile-nav-actions">
+          <Link to="/contact" onClick={() => setOpen(false)} className="btn btn-primary">
+            Book Free Counseling
+          </Link>
+          <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener" className="btn btn-whatsapp">
+            WhatsApp Us
+          </a>
+        </div>
       </div>
     </nav>
   );

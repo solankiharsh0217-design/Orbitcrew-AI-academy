@@ -35,12 +35,12 @@ export default function About() {
       />
 
       {/* Vision */}
-      <section className="section">
+      <section className="section-light">
         <div className="container">
           <div className="text-center mb-32">
             <span className="section-label">Our Vision</span>
             <h2 className="section-title">Making Practical AI & Digital Education Accessible</h2>
-            <p className="section-subtitle" style={{ margin: "0 auto", maxWidth: 720 }}>
+            <p className="section-subtitle">
               OrbitCrew AI Academy was created to bridge the gap between traditional education and the real-world skills that today's careers demand. We focus on practical, hands-on learning that prepares students for the AI-driven digital economy.
             </p>
           </div>
@@ -48,7 +48,7 @@ export default function About() {
       </section>
 
       {/* Values */}
-      <section className="section" style={{ background: "var(--white)" }}>
+      <section className="section-dark">
         <div className="container">
           <h2 className="section-title">What Makes Us Different</h2>
           <p className="section-subtitle mb-32">Our approach is built on principles that put your growth first.</p>
@@ -56,16 +56,15 @@ export default function About() {
             {values.map((v, i) => (
               <motion.div
                 key={i}
-                className="why-card"
-                style={{ padding: 32 }}
+                className="why-card stagger-item"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
-                <div style={{ fontSize: 32, marginBottom: 16 }}>{v.icon}</div>
+                <div className="value-icon">{v.icon}</div>
                 <h3>{v.title}</h3>
-                <p style={{ fontSize: 14, color: "var(--gray-500)", lineHeight: 1.6 }}>{v.desc}</p>
+                <p>{v.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -73,12 +72,12 @@ export default function About() {
       </section>
 
       {/* Local Trust */}
-      <section className="section">
+      <section className="section-light">
         <div className="container">
           <div className="text-center mb-32">
             <span className="section-label">Local Presence</span>
             <h2 className="section-title">Rooted in the Community</h2>
-            <p className="section-subtitle" style={{ margin: "0 auto" }}>
+            <p className="section-subtitle">
               We are based in Haryana, serving students from Gohana, Rohtak, Sonipat, Panipat, Jind, and nearby towns and villages. We understand the local education landscape and the career aspirations of students in our region.
             </p>
           </div>
@@ -86,27 +85,27 @@ export default function About() {
       </section>
 
       {/* Mentors */}
-      <section className="section" style={{ background: "var(--white)" }}>
+      <section className="section-dark">
         <div className="container">
           <div className="text-center mb-32">
             <span className="section-label">Our Team</span>
             <h2 className="section-title">Experienced Mentors & Trainers</h2>
-            <p className="section-subtitle" style={{ margin: "0 auto" }}>Our mentors bring real industry experience and a passion for teaching practical skills.</p>
+            <p className="section-subtitle">Our mentors bring real industry experience and a passion for teaching practical skills.</p>
           </div>
-          <div className="why-grid" style={{ maxWidth: 800, margin: "0 auto" }}>
+          <div className="why-grid mentors-grid">
             {mentors.map((m, i) => (
               <motion.div
                 key={i}
-                className="why-card"
+                className="why-card mentor-card stagger-item"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: i * 0.15 }}
               >
                 <div className="why-card-image"><ImagePlaceholder label={m.img} /></div>
-                <div className="why-card-body" style={{ textAlign: "center" }}>
+                <div className="why-card-body">
                   <h3>{m.name}</h3>
-                  <p style={{ fontSize: 13, color: "var(--primary)", fontWeight: 600 }}>{m.role}</p>
+                  <p className="mentor-role">{m.role}</p>
                 </div>
               </motion.div>
             ))}
@@ -115,12 +114,12 @@ export default function About() {
       </section>
 
       {/* Classroom Gallery */}
-      <section className="section">
+      <section className="section-light">
         <div className="container">
           <div className="text-center mb-32">
             <span className="section-label">Our Space</span>
             <h2 className="section-title">Premium Learning Environment</h2>
-            <p className="section-subtitle" style={{ margin: "0 auto" }}>Designed for focused, collaborative, and practical learning.</p>
+            <p className="section-subtitle">Designed for focused, collaborative, and practical learning.</p>
           </div>
           <HorizontalScroll trackClassName="env-track">
             {classroomImages.map((l, i) => (

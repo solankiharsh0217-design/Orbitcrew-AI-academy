@@ -27,11 +27,11 @@ export default function Placements() {
         desc="We are committed to helping students transition from learning to earning through structured career support, internship guidance, and placement preparation."
       />
 
-      <section className="section">
+      <section className="section-light">
         <div className="container">
           <div className="split-grid">
             <motion.div
-              className="split-card"
+              className="split-card stagger-item"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
@@ -47,7 +47,7 @@ export default function Placements() {
               </ul>
             </motion.div>
             <motion.div
-              className="split-card"
+              className="split-card stagger-item"
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
@@ -67,12 +67,12 @@ export default function Placements() {
         </div>
       </section>
 
-      <section className="section" style={{ background: "var(--white)" }}>
+      <section className="section-dark">
         <div className="container">
           <div className="text-center mb-32">
             <span className="section-label">Portfolio & Presence</span>
             <h2 className="section-title">Building Your Professional Identity</h2>
-            <p className="section-subtitle" style={{ margin: "0 auto" }}>Your portfolio and online presence are your career assets. We help you build both.</p>
+            <p className="section-subtitle">Your portfolio and online presence are your career assets. We help you build both.</p>
           </div>
           <div className="why-grid">
             {[
@@ -82,7 +82,7 @@ export default function Placements() {
             ].map((item, i) => (
               <motion.div
                 key={i}
-                className="why-card"
+                className="why-card stagger-item"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -96,12 +96,12 @@ export default function Placements() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section-light">
         <div className="container">
           <div className="text-center mb-32">
             <span className="section-label">Who Qualifies</span>
             <h2 className="section-title">Student Expectations</h2>
-            <p className="section-subtitle" style={{ margin: "0 auto" }}>To benefit most from our placement support, students should demonstrate commitment and dedication.</p>
+            <p className="section-subtitle">To benefit most from our placement support, students should demonstrate commitment and dedication.</p>
           </div>
           <div className="pain-grid">
             {[
@@ -112,7 +112,7 @@ export default function Placements() {
             ].map((item, i) => (
               <motion.div
                 key={i}
-                className="pain-card"
+                className="pain-card stagger-item"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -130,12 +130,12 @@ export default function Placements() {
         </div>
       </section>
 
-      <section className="section" style={{ background: "var(--white)" }}>
+      <section className="section-dark">
         <div className="container">
           <div className="text-center mb-32">
             <span className="section-label">Workplace</span>
             <h2 className="section-title">Professional Environment</h2>
-            <p className="section-subtitle" style={{ margin: "0 auto" }}>Real workplaces where our students build their careers.</p>
+            <p className="section-subtitle">Real workplaces where our students build their careers.</p>
           </div>
           <HorizontalScroll trackClassName="env-track">
             {workplaceImages.map((l, i) => (
@@ -147,7 +147,7 @@ export default function Placements() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section-light">
         <div className="container">
           <div className="text-center mb-32">
             <span className="section-label">FAQ</span>
