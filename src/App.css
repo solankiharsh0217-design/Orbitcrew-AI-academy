@@ -878,9 +878,9 @@ p {
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
   padding-bottom: 16px;
-  margin: 0 -12px;
-  padding-left: 12px;
-  padding-right: 12px;
+  margin: 0 calc(-1 * var(--container-padding));
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
 }
 
 .testimonials-track::-webkit-scrollbar {
@@ -888,11 +888,11 @@ p {
 }
 
 .testimonial-card {
-  min-width: 340px;
-  max-width: 380px;
-  flex-shrink: 0;
+  min-width: 320px;
+  max-width: 360px;
+  flex: 0 0 320px;
   scroll-snap-align: start;
-  padding: 32px;
+  padding: 28px;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-lg);
@@ -913,6 +913,8 @@ p {
   color: rgba(255, 255, 255, 0.85);
   margin-bottom: 24px;
   font-style: italic;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .testimonial-quote::before {
@@ -958,6 +960,14 @@ p {
   color: rgba(255, 255, 255, 0.6);
 }
 
+@media (max-width: 1024px) {
+  .testimonials-track {
+    margin: 0 -32px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
 @media (max-width: 768px) {
   .testimonials-track {
     margin: 0 -20px;
@@ -968,7 +978,8 @@ p {
 
   .testimonial-card {
     min-width: 280px;
-    max-width: 320px;
+    max-width: 300px;
+    flex: 0 0 280px;
     padding: 24px;
   }
 
