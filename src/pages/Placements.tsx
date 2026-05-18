@@ -103,7 +103,7 @@ export default function Placements() {
             <h2 className="section-title">Student Expectations</h2>
             <p className="section-subtitle">To benefit most from our placement support, students should demonstrate commitment and dedication.</p>
           </div>
-          <div className="pain-grid">
+          <div className="pain-grid expectations-grid">
             {[
               { title: "Strong Attendance", desc: "Regular attendance in all training sessions and project reviews is essential for building skills and confidence." },
               { title: "Project Completion", desc: "Completing all assigned projects demonstrates your ability to apply what you have learned effectively." },
