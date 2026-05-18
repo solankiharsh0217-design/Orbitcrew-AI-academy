@@ -43,7 +43,7 @@ export default function Navbar() {
   const isTransparent = isHome && !scrolled;
 
   return (
-    <nav className={`nav ${isTransparent ? "" : "scrolled"} ${open ? "nav-open" : ""}`}>
+    <nav className={`nav ${isHome ? "nav-home" : ""} ${isHome && !scrolled ? "" : "scrolled"} ${open ? "nav-open" : ""}`}>
       <div className="nav-inner">
         <Link to="/" className="nav-logo">
           OrbitCrew<span>AI</span>
