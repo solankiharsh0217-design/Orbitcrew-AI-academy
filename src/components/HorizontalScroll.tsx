@@ -5,8 +5,6 @@ interface HorizontalScrollProps {
   children: React.ReactNode;
   className?: string;
   trackClassName?: string;
-  itemWidth?: number;
-  gap?: number;
 }
 
 export default function HorizontalScroll({
@@ -21,11 +19,12 @@ export default function HorizontalScroll({
   const checkScroll = useCallback(() => {
     const el = scrollRef.current;
     if (!el) return;
-    setCanScrollLeft(el.scrollLeft > 0);
-    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 1);
+    setCanScrollLeft(el.scrollLeft > 2);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 2);
   }, []);
 
   useEffect(() => {
+    const timer = setTimeout(checkScroll, 100);
     checkScroll();
     const el = scrollRef.current;
     if (!el) return;
@@ -34,6 +33,7 @@ export default function HorizontalScroll({
     return () => {
       el.removeEventListener("scroll", checkScroll);
       window.removeEventListener("resize", checkScroll);
+      clearTimeout(timer);
     };
   }, [checkScroll]);
 
@@ -49,32 +49,29 @@ export default function HorizontalScroll({
 
   return (
     <div className={`scroll-wrapper ${className}`}>
-      {canScrollLeft && (
-        <button
-          className="scroll-btn scroll-btn-left"
-          onClick={() => scroll("left")}
-          aria-label="Scroll left"
-        >
-          <ChevronLeft size={20} />
-        </button>
-      )}
+      <button
+        className={`scroll-btn scroll-btn-left ${!canScrollLeft ? "scroll-btn-hidden" : ""}`}
+        onClick={() => scroll("left")}
+        aria-label="Scroll left"
+      >
+        <ChevronLeft size={20} />
+      </button>
 
       <div
         ref={scrollRef}
         className={`scroll-track ${trackClassName}`}
+        onScroll={checkScroll}
       >
         {children}
       </div>
 
-      {canScrollRight && (
-        <button
-          className="scroll-btn scroll-btn-right"
-          onClick={() => scroll("right")}
-          aria-label="Scroll right"
-        >
-          <ChevronRight size={20} />
-        </button>
-      )}
+      <button
+        className={`scroll-btn scroll-btn-right ${!canScrollRight ? "scroll-btn-hidden" : ""}`}
+        onClick={() => scroll("right")}
+        aria-label="Scroll right"
+      >
+        <ChevronRight size={20} />
+      </button>
     </div>
   );
 }
