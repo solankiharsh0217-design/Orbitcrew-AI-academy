@@ -50,12 +50,15 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.7;
   color: var(--gray-700);
   background: var(--white);
   overflow-x: hidden;
@@ -63,10 +66,42 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+/* === TYPOGRAPHY SCALE === */
+h1, h2, h3, h4, h5, h6 {
+  text-rendering: optimizeLegibility;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 4vw, 2.625rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+h4 {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+p {
+  line-height: 1.75;
 }
 
 a {
@@ -89,6 +124,12 @@ button {
 input, textarea, select {
   font-family: inherit;
   font-size: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* === LAYOUT === */
@@ -134,29 +175,35 @@ input, textarea, select {
 }
 
 .section-title {
-  font-size: 42px;
+  font-size: clamp(1.75rem, 4vw, 2.625rem);
   font-weight: 700;
   margin: 0 0 16px 0;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.02em;
   line-height: 1.15;
   color: var(--gray-900);
 }
 
 .section-subtitle {
-  font-size: 18px;
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
   font-weight: 400;
   color: var(--gray-500);
   margin-bottom: 48px;
-  line-height: 1.7;
+  line-height: 1.75;
+  max-width: 640px;
+}
+
+.section-subtitle[style*="margin: 0 auto"] {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .section-label {
   display: inline-block;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 700;
   color: var(--primary);
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 0.1em;
   margin-bottom: 16px;
   padding: 6px 14px;
   background: var(--primary-bg);
@@ -169,18 +216,21 @@ input, textarea, select {
   }
 
   .section-title {
-    font-size: 28px;
+    font-size: 1.75rem;
     line-height: 1.2;
+    margin-bottom: 12px;
   }
 
   .section-subtitle {
-    font-size: 15px;
+    font-size: 0.9375rem;
     margin-bottom: 32px;
+    line-height: 1.65;
   }
 
   .section-label {
-    font-size: 11px;
+    font-size: 0.6875rem;
     padding: 5px 12px;
+    margin-bottom: 12px;
   }
 }
 
@@ -236,7 +286,7 @@ input, textarea, select {
 }
 
 .nav-links a {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
   color: var(--gray-600);
   padding: 8px 14px;
@@ -244,6 +294,7 @@ input, textarea, select {
   transition: all var(--transition-fast);
   position: relative;
   white-space: nowrap;
+  letter-spacing: -0.01em;
 }
 
 .nav-links a:hover {
@@ -410,17 +461,17 @@ input, textarea, select {
 }
 
 .page-hero h1 {
-  font-size: 52px;
+  font-size: clamp(2rem, 5vw, 3.25rem);
   font-weight: 800;
   color: var(--gray-900);
   margin: 20px 0;
-  letter-spacing: -1.5px;
+  letter-spacing: -0.03em;
   line-height: 1.1;
   position: relative;
 }
 
 .page-hero p {
-  font-size: 18px;
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
   color: var(--gray-500);
   max-width: 680px;
   margin: 0 auto;
@@ -434,14 +485,15 @@ input, textarea, select {
   }
 
   .page-hero h1 {
-    font-size: 28px;
-    letter-spacing: -0.5px;
+    font-size: 1.75rem;
+    letter-spacing: -0.02em;
     margin: 16px 0;
+    line-height: 1.15;
   }
 
   .page-hero p {
-    font-size: 15px;
-    line-height: 1.6;
+    font-size: 0.9375rem;
+    line-height: 1.65;
   }
 }
 
@@ -521,14 +573,15 @@ input, textarea, select {
 }
 
 .pain-card h3 {
-  font-size: 17px;
+  font-size: 1.0625rem;
   font-weight: 600;
   color: var(--gray-900);
-  line-height: 1.3;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
 }
 
 .pain-card p {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: var(--gray-500);
   line-height: 1.65;
 }
@@ -546,11 +599,11 @@ input, textarea, select {
   }
 
   .pain-card h3 {
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   .pain-card p {
-    font-size: 13px;
+    font-size: 0.8125rem;
   }
 }
 
@@ -599,15 +652,16 @@ input, textarea, select {
 }
 
 .why-card-body h3 {
-  font-size: 17px;
+  font-size: 1.0625rem;
   font-weight: 600;
   color: var(--gray-900);
   margin-bottom: 8px;
-  line-height: 1.3;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
 }
 
 .why-card-body p {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: var(--gray-500);
   line-height: 1.65;
   flex: 1;
@@ -623,11 +677,11 @@ input, textarea, select {
   }
 
   .why-card-body h3 {
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   .why-card-body p {
-    font-size: 13px;
+    font-size: 0.8125rem;
   }
 }
 
@@ -647,12 +701,13 @@ input, textarea, select {
 }
 
 .split-card h3 {
-  font-size: 22px;
+  font-size: 1.375rem;
   font-weight: 700;
   color: var(--gray-900);
   margin-bottom: 24px;
   padding-bottom: 16px;
   border-bottom: 2px solid var(--primary-bg);
+  letter-spacing: -0.01em;
 }
 
 .split-card ul {
@@ -661,13 +716,13 @@ input, textarea, select {
 
 .split-card li {
   padding: 12px 0;
-  font-size: 15px;
+  font-size: 0.9375rem;
   color: var(--gray-600);
   border-bottom: 1px solid var(--gray-100);
   display: flex;
   align-items: center;
   gap: 12px;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 .split-card li:last-child {
@@ -696,13 +751,13 @@ input, textarea, select {
   }
 
   .split-card h3 {
-    font-size: 20px;
+    font-size: 1.25rem;
     margin-bottom: 20px;
     padding-bottom: 12px;
   }
 
   .split-card li {
-    font-size: 14px;
+    font-size: 0.875rem;
     padding: 10px 0;
   }
 }
@@ -872,16 +927,17 @@ input, textarea, select {
 }
 
 .showcase-item-body h4 {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--gray-900);
   margin-bottom: 6px;
+  letter-spacing: -0.01em;
 }
 
 .showcase-item-body p {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: var(--gray-500);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 @media (max-width: 768px) {
@@ -898,11 +954,11 @@ input, textarea, select {
   }
 
   .showcase-item-body h4 {
-    font-size: 15px;
+    font-size: 0.9375rem;
   }
 
   .showcase-item-body p {
-    font-size: 13px;
+    font-size: 0.8125rem;
   }
 }
 
@@ -982,14 +1038,15 @@ input, textarea, select {
 }
 
 .timeline-content h3 {
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 600;
   color: var(--gray-900);
   margin-bottom: 8px;
+  letter-spacing: -0.01em;
 }
 
 .timeline-content p {
-  font-size: 15px;
+  font-size: 0.9375rem;
   color: var(--gray-500);
   line-height: 1.7;
   margin: 0;
@@ -1023,11 +1080,11 @@ input, textarea, select {
   }
 
   .timeline-content h3 {
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   .timeline-content p {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 }
 
@@ -1067,11 +1124,12 @@ input, textarea, select {
 }
 
 .program-card-header h3 {
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 600;
   color: var(--gray-900);
   margin: 0;
-  line-height: 1.3;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
 }
 
 .program-card-header .meta {
@@ -1082,7 +1140,7 @@ input, textarea, select {
 }
 
 .program-card-header .duration {
-  font-size: 13px;
+  font-size: 0.8125rem;
   color: var(--primary);
   font-weight: 600;
   padding: 4px 12px;
@@ -1128,12 +1186,12 @@ input, textarea, select {
 }
 
 .program-details h4 {
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 0.8125rem;
+  font-weight: 700;
   color: var(--gray-900);
   margin-bottom: 12px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.08em;
 }
 
 .program-details ul {
@@ -1142,12 +1200,12 @@ input, textarea, select {
 
 .program-details li {
   padding: 6px 0;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: var(--gray-600);
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 .program-details li::before {
@@ -1163,6 +1221,10 @@ input, textarea, select {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
+  }
+
+  .program-card-header h3 {
+    font-size: 1.0625rem;
   }
 
   .program-card-header .meta {
@@ -1184,7 +1246,7 @@ input, textarea, select {
 .compare-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 14px;
+  font-size: 0.875rem;
   background: var(--white);
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -1202,6 +1264,9 @@ input, textarea, select {
   font-weight: 600;
   text-align: left;
   white-space: nowrap;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .compare-table th:first-child {
@@ -1212,7 +1277,7 @@ input, textarea, select {
   padding: 14px 20px;
   border-bottom: 1px solid var(--gray-100);
   color: var(--gray-600);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 .compare-table tbody tr:last-child td {
@@ -1230,12 +1295,16 @@ input, textarea, select {
 
 @media (max-width: 768px) {
   .compare-table {
-    font-size: 13px;
+    font-size: 0.8125rem;
   }
 
   .compare-table th,
   .compare-table td {
     padding: 12px 14px;
+  }
+
+  .compare-table th {
+    font-size: 0.75rem;
   }
 }
 
@@ -1268,7 +1337,7 @@ input, textarea, select {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--gray-900);
   background: none;
@@ -1277,6 +1346,8 @@ input, textarea, select {
   text-align: left;
   gap: 16px;
   transition: background var(--transition-fast);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
 }
 
 .faq-question:hover {
@@ -1315,7 +1386,7 @@ input, textarea, select {
 
 .faq-answer-inner {
   padding: 0 24px 20px;
-  font-size: 15px;
+  font-size: 0.9375rem;
   color: var(--gray-500);
   line-height: 1.75;
 }
@@ -1323,12 +1394,12 @@ input, textarea, select {
 @media (max-width: 768px) {
   .faq-question {
     padding: 16px 20px;
-    font-size: 15px;
+    font-size: 0.9375rem;
   }
 
   .faq-answer-inner {
     padding: 0 20px 16px;
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 }
 
@@ -1358,19 +1429,19 @@ input, textarea, select {
 }
 
 .final-cta h2 {
-  font-size: 42px;
+  font-size: clamp(1.75rem, 4vw, 2.625rem);
   font-weight: 700;
   margin-bottom: 16px;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.02em;
   line-height: 1.2;
 }
 
 .final-cta p {
-  font-size: 18px;
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
   color: rgba(255, 255, 255, 0.65);
   max-width: 600px;
   margin: 0 auto 40px;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 .hero-actions {
@@ -1386,11 +1457,11 @@ input, textarea, select {
   }
 
   .final-cta h2 {
-    font-size: 28px;
+    font-size: 1.75rem;
   }
 
   .final-cta p {
-    font-size: 15px;
+    font-size: 0.9375rem;
     margin-bottom: 32px;
   }
 
@@ -1419,20 +1490,21 @@ footer {
 }
 
 .footer-col h3 {
-  font-size: 15px;
+  font-size: 0.8125rem;
   font-weight: 700;
   color: var(--white);
   margin-bottom: 20px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.08em;
 }
 
 .footer-col a {
   display: block;
   padding: 6px 0;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: rgba(255, 255, 255, 0.5);
   transition: all var(--transition-fast);
+  line-height: 1.5;
 }
 
 .footer-col a:hover {
@@ -1445,7 +1517,7 @@ footer {
   justify-content: space-between;
   align-items: center;
   padding: 24px 0;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: rgba(255, 255, 255, 0.4);
 }
 
@@ -1541,10 +1613,11 @@ footer {
 
 .form-group label {
   display: block;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--gray-700);
   margin-bottom: 8px;
+  letter-spacing: -0.01em;
 }
 
 .form-group input,
@@ -1554,10 +1627,11 @@ footer {
   padding: 12px 16px;
   border: 1.5px solid var(--gray-200);
   border-radius: var(--radius-sm);
-  font-size: 15px;
+  font-size: 0.9375rem;
   color: var(--gray-700);
   background: var(--gray-50);
   transition: all var(--transition-fast);
+  line-height: 1.5;
 }
 
 .form-group input:focus,
@@ -1589,10 +1663,11 @@ footer {
 }
 
 .contact-info-card h3 {
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 700;
   color: var(--gray-900);
   margin-bottom: 20px;
+  letter-spacing: -0.01em;
 }
 
 .info-item {
@@ -1619,14 +1694,15 @@ footer {
 }
 
 .info-item h4 {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--gray-900);
   margin-bottom: 4px;
+  letter-spacing: -0.01em;
 }
 
 .info-item p {
-  font-size: 13px;
+  font-size: 0.8125rem;
   color: var(--gray-500);
   line-height: 1.5;
 }
@@ -1677,15 +1753,16 @@ footer {
   justify-content: center;
   padding: 4px 14px;
   border-radius: 100px;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.02em;
   background: var(--primary-bg);
   color: var(--primary);
   border: 1px solid var(--primary-border);
   white-space: nowrap;
   min-width: auto;
   width: fit-content;
+  line-height: 1.4;
 }
 
 .badge-success {
@@ -1706,7 +1783,7 @@ footer {
   padding: 12px 24px;
   border-radius: var(--radius-sm);
   font-weight: 600;
-  font-size: 15px;
+  font-size: 0.9375rem;
   border: none;
   cursor: pointer;
   transition: all var(--transition-base);
@@ -1718,6 +1795,8 @@ footer {
   white-space: nowrap;
   position: relative;
   overflow: hidden;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
 }
 
 .btn:disabled {
@@ -1946,17 +2025,18 @@ footer {
 }
 
 .card-header h3 {
-  font-size: 19px;
+  font-size: 1.1875rem;
   font-weight: 600;
   margin: 0;
   color: var(--gray-900);
   line-height: 1.35;
+  letter-spacing: -0.01em;
 }
 
 .card-body {
   flex: 1;
   color: var(--gray-500);
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: 1.65;
   padding: 0 28px 28px;
 }
@@ -2001,13 +2081,13 @@ footer {
 
 .center-block li {
   padding: 10px 0;
-  font-size: 15px;
+  font-size: 0.9375rem;
   color: var(--gray-600);
   border-bottom: 1px solid var(--gray-100);
   display: flex;
   align-items: center;
   gap: 12px;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 .center-block li:last-child {
@@ -2040,6 +2120,26 @@ footer {
   margin: 60px 0;
 }
 
+/* === NOTICE BOX === */
+.notice-box {
+  margin-top: 32px;
+  padding: 20px 24px;
+  background: var(--primary-bg);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--primary);
+  font-size: 0.875rem;
+  color: var(--gray-700);
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .notice-box {
+    padding: 16px 20px;
+    font-size: 0.8125rem;
+    margin-top: 24px;
+  }
+}
+
 /* === ANIMATIONS === */
 .animate-section {
   opacity: 0;
@@ -2067,12 +2167,12 @@ footer {
 @media (max-width: 768px) {
   .btn {
     padding: 10px 20px;
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 
   .btn-lg {
     padding: 14px 28px;
-    font-size: 15px;
+    font-size: 0.9375rem;
   }
 
   .card-header {
@@ -2106,11 +2206,11 @@ footer {
 
 @media (max-width: 480px) {
   .section-title {
-    font-size: 24px;
+    font-size: 1.5rem;
   }
 
   .section-subtitle {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 
   .pain-grid {
