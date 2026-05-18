@@ -53,7 +53,11 @@ export default function Home() {
       <DotGlobeHeroDemo />
 
       {/* STATS BAR */}
-      <StatsBar items={stats} />
+      <section className="section-light" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <StatsBar items={stats} />
+        </div>
+      </section>
 
       {/* PAIN POINTS */}
       <section className="section-light">
@@ -73,7 +77,7 @@ export default function Home() {
             ].map((c, i) => (
               <motion.div
                 key={i}
-                className="pain-card stagger-item"
+                className="pain-card"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -108,14 +112,14 @@ export default function Home() {
             ].map((c, i) => (
               <motion.div
                 key={i}
-                className={`why-card stagger-item ${i === 0 ? "card-featured" : ""}`}
+                className={`why-card ${i === 0 ? "card-featured" : ""}`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
                 <div className="card-header">
-                  <span className={`badge ${i === 0 ? "badge-premium" : "badge-default"}`}>{c.badge}</span>
+                  <span className={`badge ${i === 0 ? "badge-premium" : ""}`}>{c.badge}</span>
                   <h3>{c.title}</h3>
                 </div>
                 <div className="why-card-image"><ImagePlaceholder label={c.img} /></div>
@@ -168,7 +172,7 @@ export default function Home() {
           </div>
           <div className="split-grid">
             <motion.div
-              className="split-card stagger-item"
+              className="split-card"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
@@ -183,7 +187,7 @@ export default function Home() {
               </ul>
             </motion.div>
             <motion.div
-              className="split-card stagger-item"
+              className="split-card"
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}

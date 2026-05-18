@@ -56,15 +56,17 @@ export default function About() {
             {values.map((v, i) => (
               <motion.div
                 key={i}
-                className="why-card stagger-item"
+                className="why-card value-card"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
                 <div className="value-icon">{v.icon}</div>
-                <h3>{v.title}</h3>
-                <p>{v.desc}</p>
+                <div className="why-card-body">
+                  <h3>{v.title}</h3>
+                  <p>{v.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -96,7 +98,7 @@ export default function About() {
             {mentors.map((m, i) => (
               <motion.div
                 key={i}
-                className="why-card mentor-card stagger-item"
+                className="why-card mentor-card"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}

@@ -4,26 +4,25 @@ import { motion } from "framer-motion";
 interface StatItem {
   value: string;
   label: string;
-  suffix?: string;
 }
 
 interface StatsBarProps {
   items: StatItem[];
 }
 
-function AnimatedCounter({ target, suffix = "" }: { target: string; suffix?: string }) {
+function AnimatedCounter({ target }: { target: string }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
   const [hasAnimated, setHasAnimated] = useState(false);
 
   const numericTarget = parseInt(target.replace(/[^0-9]/g, ""), 10);
+  const suffix = target.replace(/[0-9]/g, "");
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated) {
           setHasAnimated(true);
-          let start = 0;
           const duration = 2000;
           const startTime = performance.now();
 
@@ -41,7 +40,7 @@ function AnimatedCounter({ target, suffix = "" }: { target: string; suffix?: str
           requestAnimationFrame(animate);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.3 }
     );
 
     if (ref.current) observer.observe(ref.current);
@@ -50,8 +49,7 @@ function AnimatedCounter({ target, suffix = "" }: { target: string; suffix?: str
 
   return (
     <div ref={ref} className="stat-value">
-      {count}
-      {suffix}
+      {count}{suffix}
     </div>
   );
 }
@@ -59,23 +57,19 @@ function AnimatedCounter({ target, suffix = "" }: { target: string; suffix?: str
 export default function StatsBar({ items }: StatsBarProps) {
   return (
     <div className="stats-bar">
-      {items.map((item, i) => {
-        const numericValue = item.value.replace(/[^0-9]/g, "");
-        const suffix = item.value.replace(/[0-9]/g, "");
-        return (
-          <motion.div
-            key={i}
-            className="stat-item"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
-          >
-            <AnimatedCounter target={numericValue} suffix={suffix} />
-            <div className="stat-label">{item.label}</div>
-          </motion.div>
-        );
-      })}
+      {items.map((item, i) => (
+        <motion.div
+          key={i}
+          className="stat-item"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, delay: i * 0.1 }}
+        >
+          <AnimatedCounter target={item.value} />
+          <div className="stat-label">{item.label}</div>
+        </motion.div>
+      ))}
     </div>
   );
 }

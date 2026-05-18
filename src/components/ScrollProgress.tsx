@@ -5,9 +5,10 @@ export default function ScrollProgress() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = (window.scrollY / totalHeight) * 100;
-      setProgress(scrolled);
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      setProgress(scrollPercent);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -18,6 +19,7 @@ export default function ScrollProgress() {
     <div
       className="scroll-progress"
       style={{ width: `${progress}%` }}
+      aria-hidden="true"
     />
   );
 }

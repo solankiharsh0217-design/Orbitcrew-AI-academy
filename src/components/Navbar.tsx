@@ -43,166 +43,52 @@ export default function Navbar() {
   const isTransparent = isHome && !scrolled;
 
   return (
-    <nav className={`nav ${open ? "nav-open" : ""}`} style={{
-      position: "fixed",
-      top: 0,
-      left: 0,
-      right: 0,
-      zIndex: 1000,
-      padding: isTransparent ? "20px 48px" : "12px 48px",
-      background: isTransparent ? "transparent" : "rgba(255, 255, 255, 0.95)",
-      backdropFilter: isTransparent ? "none" : "blur(20px)",
-      borderBottom: isTransparent ? "none" : "1px solid rgba(107, 69, 240, 0.1)",
-      transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-    }}>
-      <div className="nav-inner" style={{
-        maxWidth: "1400px",
-        margin: "0 auto",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        height: "60px",
-      }}>
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="nav-logo" style={{
-            fontSize: "24px",
-            fontWeight: 800,
-            color: isTransparent ? "#ffffff" : "#1a1a2e",
-            letterSpacing: "-0.5px",
-          }}>
-            OrbitCrew<span style={{
-              background: "linear-gradient(135deg, #6b45f0, #00c9a7)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}>AI</span>
-          </span>
+    <nav className={`nav ${isTransparent ? "" : "scrolled"} ${open ? "nav-open" : ""}`}>
+      <div className="nav-inner">
+        <Link to="/" className="nav-logo">
+          OrbitCrew<span>AI</span>
         </Link>
 
-        <div className="nav-links" style={{
-          display: "flex",
-          gap: "8px",
-          alignItems: "center",
-        }}>
+        <div className="nav-links">
           {links.map((l) => (
             <Link
               key={l.to}
               to={l.to}
+              className={location.pathname === l.to ? "active" : ""}
               onClick={() => setOpen(false)}
-              style={{
-                textDecoration: "none",
-                color: isTransparent
-                  ? (location.pathname === l.to ? "#ffffff" : "rgba(255,255,255,0.8)")
-                  : (location.pathname === l.to ? "#6b45f0" : "#333"),
-                fontSize: "14px",
-                fontWeight: location.pathname === l.to ? 600 : 500,
-                padding: "8px 14px",
-                borderRadius: "6px",
-                transition: "all 0.2s ease",
-                background: location.pathname === l.to
-                  ? (isTransparent ? "rgba(107, 69, 240, 0.3)" : "rgba(107, 69, 240, 0.1)")
-                  : "transparent",
-              }}
-              onMouseEnter={(e) => {
-                if (location.pathname !== l.to) {
-                  e.currentTarget.style.color = isTransparent ? "#ffffff" : "#6b45f0";
-                  e.currentTarget.style.background = isTransparent ? "rgba(107, 69, 240, 0.2)" : "rgba(107, 69, 240, 0.05)";
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (location.pathname !== l.to) {
-                  e.currentTarget.style.color = isTransparent ? "rgba(255,255,255,0.8)" : "#333";
-                  e.currentTarget.style.background = "transparent";
-                }
-              }}
             >
               {l.label}
             </Link>
           ))}
         </div>
 
-        <div className="nav-actions" style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-          <Link to="/contact" style={{ textDecoration: "none" }}>
-            <button className="btn btn-primary" style={{
-              padding: "10px 24px",
-              background: "linear-gradient(135deg, #6b45f0, #5535c9)",
-              color: "#ffffff",
-              border: "none",
-              borderRadius: "6px",
-              fontSize: "14px",
-              fontWeight: 600,
-              cursor: "pointer",
-              transition: "all 0.3s ease",
-              boxShadow: "0 4px 16px rgba(107, 69, 240, 0.3)",
-            }}>
-              Book Counseling
-            </button>
+        <div className="nav-actions">
+          <Link to="/contact">
+            <button className="btn btn-primary">Book Counseling</button>
           </Link>
-          <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener" style={{ textDecoration: "none" }}>
-            <button className="btn btn-whatsapp" style={{
-              padding: "10px 24px",
-              background: "#25D366",
-              color: "#ffffff",
-              border: "none",
-              borderRadius: "6px",
-              fontSize: "14px",
-              fontWeight: 600,
-              cursor: "pointer",
-              transition: "all 0.3s ease",
-            }}>
-              WhatsApp
-            </button>
+          <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener">
+            <button className="btn btn-whatsapp">WhatsApp</button>
           </a>
         </div>
 
         <button
           className="nav-toggle"
           onClick={() => setOpen(!open)}
-          style={{
-            display: "none",
-            flexDirection: "column",
-            gap: "5px",
-            padding: "8px",
-            cursor: "pointer",
-            background: "none",
-            border: "none",
-          }}
+          aria-label="Toggle menu"
         >
-          <span style={{
-            width: "24px",
-            height: "2px",
-            background: isTransparent ? "#ffffff" : "#1a1a2e",
-            borderRadius: "2px",
-            transition: "all 0.3s ease",
-          }} />
-          <span style={{
-            width: "24px",
-            height: "2px",
-            background: isTransparent ? "#ffffff" : "#1a1a2e",
-            borderRadius: "2px",
-            transition: "all 0.3s ease",
-          }} />
-          <span style={{
-            width: "24px",
-            height: "2px",
-            background: isTransparent ? "#ffffff" : "#1a1a2e",
-            borderRadius: "2px",
-            transition: "all 0.3s ease",
-          }} />
+          <span />
+          <span />
+          <span />
         </button>
       </div>
 
-      {/* Mobile Fullscreen Overlay */}
       <div className="nav-mobile-overlay">
         {links.map((l) => (
           <Link
             key={l.to}
             to={l.to}
+            className={location.pathname === l.to ? "active" : ""}
             onClick={() => setOpen(false)}
-            style={{
-              color: location.pathname === l.to ? "var(--primary)" : "var(--gray-900)",
-              fontWeight: location.pathname === l.to ? 700 : 600,
-            }}
           >
             {l.label}
           </Link>
