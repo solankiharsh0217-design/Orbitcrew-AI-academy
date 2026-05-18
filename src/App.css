@@ -215,14 +215,16 @@ p {
 
 .section-dark .pain-card h3,
 .section-dark .why-card-body h3,
-.section-dark .split-card h3 {
+.section-dark .split-card h3,
+.section-dark .card-header h3 {
   color: var(--white);
 }
 
 .section-dark .pain-card p,
 .section-dark .why-card-body p,
-.section-dark .split-card li {
-  color: rgba(255, 255, 255, 0.55);
+.section-dark .split-card li,
+.section-dark .card-body p {
+  color: rgba(255, 255, 255, 0.65);
 }
 
 .section-dark .pain-card .icon {
