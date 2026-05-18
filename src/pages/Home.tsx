@@ -5,6 +5,7 @@ import Showcase from "../components/Showcase";
 import Timeline from "../components/Timeline";
 import FAQ from "../components/FAQ";
 import FinalCTA from "../components/FinalCTA";
+import HorizontalScroll from "../components/HorizontalScroll";
 import { faqData } from "../data/programs";
 import DotGlobeHeroDemo from "../components/ui/hero-demo";
 import { PremiumButton } from "../components/ui/PremiumButton";
@@ -178,15 +179,13 @@ export default function Home() {
             <h2 className="section-title">A Real Learning Environment</h2>
             <p className="section-subtitle" style={{ margin: "0 auto" }}>Premium classrooms, modern workstations, and a collaborative atmosphere designed for focused learning.</p>
           </div>
-          <div className="env-scroll">
-            <div className="env-track">
-              {["Premium Classroom Overview", "Modern Workstations", "Mentorship Moment", "Practical Session", "Project Discussion", "Collaborative Learning", "Students Working"].map((l, i) => (
-                <div key={i} className="env-card">
-                  <ImagePlaceholder label={l} />
-                </div>
-              ))}
-            </div>
-          </div>
+          <HorizontalScroll trackClassName="env-track" itemWidth={320} gap={16}>
+            {["Premium Classroom Overview", "Modern Workstations", "Mentorship Moment", "Practical Session", "Project Discussion", "Collaborative Learning", "Students Working"].map((l, i) => (
+              <div key={i} className="env-card">
+                <ImagePlaceholder label={l} />
+              </div>
+            ))}
+          </HorizontalScroll>
         </div>
       </section>
 

@@ -1944,4 +1944,28 @@ footer {
   .center-block ul {
     max-width: 100%;
   }
+
+  .scroll-btn {
+    display: none !important;
+  }
+
+  .env-card {
+    width: 280px;
+    height: 200px;
+  }
+
+  .showcase-item {
+    width: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .env-card {
+    width: 260px;
+    height: 180px;
+  }
+
+  .showcase-item {
+    width: 260px;
+  }
 }

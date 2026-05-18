@@ -2,6 +2,7 @@ import PageHero from "../components/PageHero";
 import ImagePlaceholder from "../components/ImagePlaceholder";
 import FAQ from "../components/FAQ";
 import FinalCTA from "../components/FinalCTA";
+import HorizontalScroll from "../components/HorizontalScroll";
 import { motion } from "framer-motion";
 
 const placementFaq = [
@@ -136,15 +137,13 @@ export default function Placements() {
             <h2 className="section-title">Professional Environment</h2>
             <p className="section-subtitle" style={{ margin: "0 auto" }}>Real workplaces where our students build their careers.</p>
           </div>
-          <div className="env-scroll">
-            <div className="env-track">
-              {workplaceImages.map((l, i) => (
-                <div key={i} className="env-card">
-                  <ImagePlaceholder label={l} />
-                </div>
-              ))}
-            </div>
-          </div>
+          <HorizontalScroll trackClassName="env-track" itemWidth={320} gap={16}>
+            {workplaceImages.map((l, i) => (
+              <div key={i} className="env-card">
+                <ImagePlaceholder label={l} />
+              </div>
+            ))}
+          </HorizontalScroll>
         </div>
       </section>
 

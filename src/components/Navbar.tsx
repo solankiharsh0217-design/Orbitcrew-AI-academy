@@ -16,19 +16,23 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
+
   const links = [
     { to: "/", label: "Home" },
     { to: "/programs", label: "Programs" },
     { to: "/student-journey", label: "Student Journey" },
-    { to: "/placements", label: "Placements & Internships" },
-    { to: "/about", label: "About Academy" },
+    { to: "/placements", label: "Placements" },
+    { to: "/about", label: "About" },
     { to: "/contact", label: "Contact" },
   ];
 
   const isTransparent = isHome && !scrolled;
 
   return (
-    <nav style={{
+    <nav className={`nav ${open ? "nav-open" : ""}`} style={{
       position: "fixed",
       top: 0,
       left: 0,
@@ -40,7 +44,7 @@ export default function Navbar() {
       borderBottom: isTransparent ? "none" : "1px solid rgba(107, 69, 240, 0.1)",
       transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
     }}>
-      <div style={{
+      <div className="nav-inner" style={{
         maxWidth: "1400px",
         margin: "0 auto",
         display: "flex",
@@ -48,9 +52,8 @@ export default function Navbar() {
         justifyContent: "space-between",
         height: "60px",
       }}>
-        {/* Logo */}
         <Link to="/" style={{ textDecoration: "none" }}>
-          <span style={{
+          <span className="nav-logo" style={{
             fontSize: "24px",
             fontWeight: 800,
             color: isTransparent ? "#ffffff" : "#1a1a2e",
@@ -65,8 +68,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Nav Links */}
-        <div style={{
+        <div className="nav-links" style={{
           display: "flex",
           gap: "8px",
           alignItems: "center",
@@ -108,14 +110,11 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* CTA Buttons */}
-        <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+        <div className="nav-actions" style={{ display: "flex", gap: "10px", alignItems: "center" }}>
           <Link to="/contact" style={{ textDecoration: "none" }}>
-            <button style={{
+            <button className="btn btn-primary" style={{
               padding: "10px 24px",
-              background: isTransparent
-                ? "linear-gradient(135deg, #6b45f0, #5535c9)"
-                : "linear-gradient(135deg, #6b45f0, #5535c9)",
+              background: "linear-gradient(135deg, #6b45f0, #5535c9)",
               color: "#ffffff",
               border: "none",
               borderRadius: "6px",
@@ -129,11 +128,11 @@ export default function Navbar() {
             </button>
           </Link>
           <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener" style={{ textDecoration: "none" }}>
-            <button style={{
+            <button className="btn btn-whatsapp" style={{
               padding: "10px 24px",
-              background: isTransparent ? "rgba(37, 211, 102, 0.15)" : "transparent",
-              color: isTransparent ? "#25D366" : "#25D366",
-              border: isTransparent ? "1px solid rgba(37, 211, 102, 0.3)" : "1px solid #25D366",
+              background: "#25D366",
+              color: "#ffffff",
+              border: "none",
               borderRadius: "6px",
               fontSize: "14px",
               fontWeight: 600,
@@ -145,8 +144,8 @@ export default function Navbar() {
           </a>
         </div>
 
-        {/* Mobile Toggle */}
         <button
+          className="nav-toggle"
           onClick={() => setOpen(!open)}
           style={{
             display: "none",

@@ -1,6 +1,7 @@
 import PageHero from "../components/PageHero";
 import ImagePlaceholder from "../components/ImagePlaceholder";
 import FinalCTA from "../components/FinalCTA";
+import HorizontalScroll from "../components/HorizontalScroll";
 import { motion } from "framer-motion";
 
 const values = [
@@ -121,15 +122,13 @@ export default function About() {
             <h2 className="section-title">Premium Learning Environment</h2>
             <p className="section-subtitle" style={{ margin: "0 auto" }}>Designed for focused, collaborative, and practical learning.</p>
           </div>
-          <div className="env-scroll">
-            <div className="env-track">
-              {classroomImages.map((l, i) => (
-                <div key={i} className="env-card">
-                  <ImagePlaceholder label={l} />
-                </div>
-              ))}
-            </div>
-          </div>
+          <HorizontalScroll trackClassName="env-track" itemWidth={320} gap={16}>
+            {classroomImages.map((l, i) => (
+              <div key={i} className="env-card">
+                <ImagePlaceholder label={l} />
+              </div>
+            ))}
+          </HorizontalScroll>
         </div>
       </section>
 

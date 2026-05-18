@@ -1,4 +1,5 @@
 import ImagePlaceholder from "./ImagePlaceholder";
+import HorizontalScroll from "./HorizontalScroll";
 
 const items = [
   { label: "AI Dashboard", url: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80", desc: "Real-time workflow monitoring system" },
@@ -20,21 +21,19 @@ export default function Showcase({ title = "What Our Students Build", subtitle =
           <h2 className="section-title">{title}</h2>
           <p className="section-subtitle" style={{ margin: "0 auto" }}>{subtitle}</p>
         </div>
-        <div className="showcase-scroll">
-          <div className="showcase-track">
-            {items.map((item, i) => (
-              <div key={i} className="showcase-item">
-                <div className="showcase-item-image">
-                  <img src={item.url} alt={item.label} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                </div>
-                <div className="showcase-item-body">
-                  <h4>{item.label}</h4>
-                  <p>{item.desc}</p>
-                </div>
+        <HorizontalScroll trackClassName="showcase-track" itemWidth={320} gap={20}>
+          {items.map((item, i) => (
+            <div key={i} className="showcase-item">
+              <div className="showcase-item-image">
+                <img src={item.url} alt={item.label} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
               </div>
-            ))}
-          </div>
-        </div>
+              <div className="showcase-item-body">
+                <h4>{item.label}</h4>
+                <p>{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </HorizontalScroll>
       </div>
     </section>
   );
