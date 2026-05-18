@@ -875,6 +875,7 @@ p {
 /* === TESTIMONIALS === */
 .testimonials-wrapper {
   position: relative;
+  overflow: hidden;
 }
 
 .testimonials-wrapper::after {
@@ -898,7 +899,8 @@ p {
   padding-bottom: 8px;
   margin: 0 calc(-1 * var(--container-padding));
   padding-left: var(--container-padding);
-  padding-right: calc(var(--container-padding) + 200px);
+  padding-right: var(--container-padding);
+  justify-content: center;
 }
 
 .testimonials-track::-webkit-scrollbar {
@@ -906,10 +908,9 @@ p {
 }
 
 .testimonial-card {
-  min-width: 320px;
-  max-width: 320px;
+  width: 320px;
   flex: 0 0 320px;
-  scroll-snap-align: start;
+  scroll-snap-align: center;
   padding: 28px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -989,7 +990,8 @@ p {
   .testimonials-track {
     margin: 0 -32px;
     padding-left: 32px;
-    padding-right: calc(32px + 200px);
+    padding-right: 32px;
+    justify-content: flex-start;
   }
 }
 
@@ -1001,13 +1003,12 @@ p {
   .testimonials-track {
     margin: 0 -20px;
     padding-left: 20px;
-    padding-right: calc(20px + 160px);
+    padding-right: 20px;
     gap: 16px;
   }
 
   .testimonial-card {
-    min-width: 280px;
-    max-width: 280px;
+    width: 280px;
     flex: 0 0 280px;
     padding: 24px;
   }
