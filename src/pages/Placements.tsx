@@ -137,7 +137,7 @@ export default function Placements() {
             <h2 className="section-title">Professional Environment</h2>
             <p className="section-subtitle" style={{ margin: "0 auto" }}>Real workplaces where our students build their careers.</p>
           </div>
-          <HorizontalScroll trackClassName="env-track" itemWidth={320} gap={16}>
+          <HorizontalScroll trackClassName="env-track">
             {workplaceImages.map((l, i) => (
               <div key={i} className="env-card">
                 <ImagePlaceholder label={l} />

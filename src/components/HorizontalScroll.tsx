@@ -13,8 +13,6 @@ export default function HorizontalScroll({
   children,
   className = "",
   trackClassName = "",
-  itemWidth = 320,
-  gap = 16,
 }: HorizontalScrollProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -42,7 +40,7 @@ export default function HorizontalScroll({
   const scroll = (direction: "left" | "right") => {
     const el = scrollRef.current;
     if (!el) return;
-    const scrollAmount = itemWidth + gap;
+    const scrollAmount = 340;
     el.scrollBy({
       left: direction === "left" ? -scrollAmount : scrollAmount,
       behavior: "smooth",
@@ -50,39 +48,12 @@ export default function HorizontalScroll({
   };
 
   return (
-    <div className={`scroll-wrapper ${className}`} style={{ position: "relative" }}>
+    <div className={`scroll-wrapper ${className}`}>
       {canScrollLeft && (
         <button
           className="scroll-btn scroll-btn-left"
           onClick={() => scroll("left")}
           aria-label="Scroll left"
-          style={{
-            position: "absolute",
-            left: "-16px",
-            top: "50%",
-            transform: "translateY(-50%)",
-            zIndex: 10,
-            width: "44px",
-            height: "44px",
-            borderRadius: "50%",
-            background: "var(--white)",
-            border: "1px solid var(--primary-border)",
-            boxShadow: "var(--shadow-md)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: "pointer",
-            transition: "all 0.2s ease",
-            color: "var(--primary)",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = "var(--primary)";
-            e.currentTarget.style.color = "#fff";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = "var(--white)";
-            e.currentTarget.style.color = "var(--primary)";
-          }}
         >
           <ChevronLeft size={20} />
         </button>
@@ -90,13 +61,7 @@ export default function HorizontalScroll({
 
       <div
         ref={scrollRef}
-        className={trackClassName}
-        style={{
-          overflowX: "auto",
-          paddingBottom: "20px",
-          scrollbarWidth: "thin",
-          scrollbarColor: "var(--primary-light) var(--gray-100)",
-        }}
+        className={`scroll-track ${trackClassName}`}
       >
         {children}
       </div>
@@ -106,33 +71,6 @@ export default function HorizontalScroll({
           className="scroll-btn scroll-btn-right"
           onClick={() => scroll("right")}
           aria-label="Scroll right"
-          style={{
-            position: "absolute",
-            right: "-16px",
-            top: "50%",
-            transform: "translateY(-50%)",
-            zIndex: 10,
-            width: "44px",
-            height: "44px",
-            borderRadius: "50%",
-            background: "var(--white)",
-            border: "1px solid var(--primary-border)",
-            boxShadow: "var(--shadow-md)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: "pointer",
-            transition: "all 0.2s ease",
-            color: "var(--primary)",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = "var(--primary)";
-            e.currentTarget.style.color = "#fff";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = "var(--white)";
-            e.currentTarget.style.color = "var(--primary)";
-          }}
         >
           <ChevronRight size={20} />
         </button>

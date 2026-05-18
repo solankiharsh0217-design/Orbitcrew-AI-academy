@@ -21,7 +21,7 @@ export default function Showcase({ title = "What Our Students Build", subtitle =
           <h2 className="section-title">{title}</h2>
           <p className="section-subtitle" style={{ margin: "0 auto" }}>{subtitle}</p>
         </div>
-        <HorizontalScroll trackClassName="showcase-track" itemWidth={320} gap={20}>
+        <HorizontalScroll trackClassName="showcase-track">
           {items.map((item, i) => (
             <div key={i} className="showcase-item">
               <div className="showcase-item-image">

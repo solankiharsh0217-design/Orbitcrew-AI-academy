@@ -179,7 +179,7 @@ export default function Home() {
             <h2 className="section-title">A Real Learning Environment</h2>
             <p className="section-subtitle" style={{ margin: "0 auto" }}>Premium classrooms, modern workstations, and a collaborative atmosphere designed for focused learning.</p>
           </div>
-          <HorizontalScroll trackClassName="env-track" itemWidth={320} gap={16}>
+          <HorizontalScroll trackClassName="env-track">
             {["Premium Classroom Overview", "Modern Workstations", "Mentorship Moment", "Practical Session", "Project Discussion", "Collaborative Learning", "Students Working"].map((l, i) => (
               <div key={i} className="env-card">
                 <ImagePlaceholder label={l} />

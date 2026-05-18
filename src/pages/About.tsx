@@ -122,7 +122,7 @@ export default function About() {
             <h2 className="section-title">Premium Learning Environment</h2>
             <p className="section-subtitle" style={{ margin: "0 auto" }}>Designed for focused, collaborative, and practical learning.</p>
           </div>
-          <HorizontalScroll trackClassName="env-track" itemWidth={320} gap={16}>
+          <HorizontalScroll trackClassName="env-track">
             {classroomImages.map((l, i) => (
               <div key={i} className="env-card">
                 <ImagePlaceholder label={l} />

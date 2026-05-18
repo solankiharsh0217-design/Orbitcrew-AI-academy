@@ -718,6 +718,65 @@ input, textarea, select {
   background: var(--gray-100);
 }
 
+/* === HORIZONTAL SCROLL === */
+.scroll-wrapper {
+  position: relative;
+}
+
+.scroll-track {
+  overflow-x: auto;
+  padding-bottom: 20px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-light) var(--gray-100);
+}
+
+.scroll-track::-webkit-scrollbar {
+  height: 6px;
+}
+
+.scroll-track::-webkit-scrollbar-track {
+  background: var(--gray-100);
+  border-radius: 3px;
+}
+
+.scroll-track::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
+  border-radius: 3px;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1px solid var(--primary-border);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--primary);
+}
+
+.scroll-btn:hover {
+  background: var(--primary);
+  color: var(--white);
+  box-shadow: var(--shadow-primary);
+}
+
+.scroll-btn-left {
+  left: -16px;
+}
+
+.scroll-btn-right {
+  right: -16px;
+}
+
 /* === SHOWCASE === */
 .showcase-scroll {
   overflow-x: auto;
