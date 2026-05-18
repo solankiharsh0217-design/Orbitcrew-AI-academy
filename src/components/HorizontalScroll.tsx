@@ -40,17 +40,18 @@ export default function HorizontalScroll({
   const scroll = (direction: "left" | "right") => {
     const el = scrollRef.current;
     if (!el) return;
-    const scrollAmount = 340;
+    const firstChild = el.firstElementChild as HTMLElement | null;
+    const itemWidth = firstChild ? firstChild.offsetWidth + 16 : 340;
     el.scrollBy({
-      left: direction === "left" ? -scrollAmount : scrollAmount,
+      left: direction === "left" ? -itemWidth : itemWidth,
       behavior: "smooth",
     });
   };
 
   return (
-    <div className={`scroll-wrapper ${className}`}>
+    <div className={`hscroll ${className}`}>
       <button
-        className={`scroll-btn scroll-btn-left ${!canScrollLeft ? "scroll-btn-hidden" : ""}`}
+        className={`hscroll-btn hscroll-btn-left ${!canScrollLeft ? "hscroll-btn-hidden" : ""}`}
         onClick={() => scroll("left")}
         aria-label="Scroll left"
       >
@@ -59,14 +60,14 @@ export default function HorizontalScroll({
 
       <div
         ref={scrollRef}
-        className={`scroll-track ${trackClassName}`}
+        className={`hscroll-track ${trackClassName}`}
         onScroll={checkScroll}
       >
         {children}
       </div>
 
       <button
-        className={`scroll-btn scroll-btn-right ${!canScrollRight ? "scroll-btn-hidden" : ""}`}
+        className={`hscroll-btn hscroll-btn-right ${!canScrollRight ? "hscroll-btn-hidden" : ""}`}
         onClick={() => scroll("right")}
         aria-label="Scroll right"
       >
