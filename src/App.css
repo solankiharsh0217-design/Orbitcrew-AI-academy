@@ -2196,40 +2196,6 @@ footer {
     padding-bottom: 80px;
   }
 }
-
-/* === FLOATING WHATSAPP === */
-.floating-whatsapp {
-  position: fixed;
-  bottom: 32px;
-  right: 32px;
-  z-index: 998;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #25D366;
-  color: var(--white);
-  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--transition-base);
-  text-decoration: none;
-}
-
-.floating-whatsapp:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 28px rgba(37, 211, 102, 0.5);
-}
-
-@media (max-width: 768px) {
-  .floating-whatsapp {
-    bottom: 90px;
-    right: 20px;
-    width: 52px;
-    height: 52px;
-  }
-}
-
 /* === CONTACT === */
 .contact-grid {
   display: grid;

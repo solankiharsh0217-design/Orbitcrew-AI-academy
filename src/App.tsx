@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import MobileCTA from "./components/MobileCTA";
-import FloatingWhatsApp from "./components/FloatingWhatsApp";
 import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import Programs from "./pages/Programs";
@@ -29,7 +28,6 @@ export default function App() {
       </main>
       <Footer />
       <MobileCTA />
-      <FloatingWhatsApp />
     </Router>
   );
 }
